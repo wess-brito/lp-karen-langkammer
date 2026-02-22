@@ -69,8 +69,14 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
   const [isSuccess, setIsSuccess] = useState(false);
+  const [emailError, setEmailError] = useState('');
 
   if (!isOpen) return null;
+
+  const validateEmail = (email: string) => {
+    const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+    return re.test(email);
+  };
 
   const formatPhone = (value: string) => {
     const phoneNumber = value.replace(/\D/g, '');
@@ -87,11 +93,26 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
     if (e.target.name === 'telefone') {
       value = formatPhone(value);
     }
+
+    if (e.target.name === 'email') {
+      if (value && !validateEmail(value)) {
+        setEmailError('Por favor, insira um e-mail válido.');
+      } else {
+        setEmailError('');
+      }
+    }
+
     setFormData({ ...formData, [e.target.name]: value });
   };
 
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
+
+    if (!validateEmail(formData.email)) {
+      setEmailError('Por favor, insira um e-mail válido para prosseguir.');
+      return;
+    }
+
     setIsSubmitting(true);
 
     // Simulação de envio para API
@@ -169,7 +190,10 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
                   />
                 </div>
                 <div>
-                  <label htmlFor="email" className="block text-sm font-medium text-gray-700 mb-1">E-mail</label>
+                  <div className="flex justify-between items-end mb-1">
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-mail</label>
+                    {emailError && <span className="text-[10px] font-bold text-red-500 uppercase tracking-wider">{emailError}</span>}
+                  </div>
                   <input
                     required
                     type="email"
@@ -177,7 +201,7 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
                     value={formData.email}
                     onChange={handleChange}
                     placeholder="seu@email.com"
-                    className="w-full px-4 py-3 rounded-lg border border-gray-300 focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all"
+                    className={`w-full px-4 py-3 rounded-lg border ${emailError ? 'border-red-500 ring-1 ring-red-500' : 'border-gray-300'} focus:ring-2 focus:ring-purple-600 focus:border-transparent outline-none transition-all`}
                   />
                 </div>
               </div>
@@ -233,6 +257,19 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
                 Clique aqui se o download não iniciar
               </a>
             )}
+            <div className="bg-purple-50 p-6 rounded-2xl border border-purple-100 mb-8 w-full">
+              <p className="text-purple-900 font-bold mb-4">Acompanhe Karen langkammer no Instagram!</p>
+              <a
+                href="https://www.instagram.com/delegadakarendf?igsh=NWpmcHJ3dWR1bmRr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-[1.02]"
+              >
+                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+                Seguir no Instagram
+              </a>
+            </div>
+
             <button
               onClick={onClose}
               className="px-8 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors"
@@ -493,9 +530,15 @@ const App = () => {
           </div>
 
           <div className="mt-12">
-            <button className="text-purple-300 hover:text-white underline underline-offset-4 transition-colors">
+            <a
+              href={`https://wa.me/?text=${encodeURIComponent('Olá! Conheça a causa da Karen Langkammer pela segurança das mulheres no DF: ' + window.location.href)}`}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-purple-300 hover:text-white underline underline-offset-4 transition-colors inline-flex items-center gap-2"
+            >
+              <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 1 1-7.6-11.7 8.38 8.38 0 0 1 3.8.9L21 3z"></path></svg>
               Compartilhar essa causa com uma amiga
-            </button>
+            </a>
           </div>
         </div>
       </section>
