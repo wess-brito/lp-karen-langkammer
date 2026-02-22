@@ -30,3 +30,5 @@ jobs:
           local-dir: ./dist/
           server-dir: ./public_html/
           dangerous-clean-slate: true
+
+# Comentário para forçar o trigger do deploy
