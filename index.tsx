@@ -108,6 +108,13 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    const isFormValid = formData.nome && formData.telefone && formData.email && formData.ra;
+
+    if (!isFormValid) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
     if (!validateEmail(formData.email)) {
       setEmailError('Por favor, insira um e-mail válido para prosseguir.');
       return;
@@ -164,7 +171,9 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
 
             <form onSubmit={handleSubmit} className="p-8 space-y-5">
               <div>
-                <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1">Nome Completo</label>
+                <label htmlFor="nome" className="block text-sm font-medium text-gray-700 mb-1">
+                  Nome Completo <span className="text-red-500">*</span>
+                </label>
                 <input
                   required
                   type="text"
@@ -178,7 +187,9 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
 
               <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
                 <div>
-                  <label htmlFor="telefone" className="block text-sm font-medium text-gray-700 mb-1">Telefone (WhatsApp)</label>
+                  <label htmlFor="telefone" className="block text-sm font-medium text-gray-700 mb-1">
+                    Telefone (WhatsApp) <span className="text-red-500">*</span>
+                  </label>
                   <input
                     required
                     type="tel"
@@ -191,7 +202,9 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
                 </div>
                 <div>
                   <div className="flex justify-between items-end mb-1">
-                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">E-mail</label>
+                    <label htmlFor="email" className="block text-sm font-medium text-gray-700">
+                      E-mail <span className="text-red-500">*</span>
+                    </label>
                     {emailError && <span className="text-[10px] font-bold text-red-500 uppercase tracking-wider">{emailError}</span>}
                   </div>
                   <input
@@ -207,7 +220,9 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
               </div>
 
               <div>
-                <label htmlFor="ra" className="block text-sm font-medium text-gray-700 mb-1">Região Administrativa</label>
+                <label htmlFor="ra" className="block text-sm font-medium text-gray-700 mb-1">
+                  Região Administrativa <span className="text-red-500">*</span>
+                </label>
                 <select
                   required
                   name="ra"
@@ -548,7 +563,11 @@ const App = () => {
         <div className="container mx-auto px-6 text-center">
           <p className="font-display font-bold text-white text-xl mb-4">KAREN LANGKAMMER</p>
           <p className="text-sm mb-2">Delegada de Polícia Civil • Pré-candidata a Deputada Distrital</p>
-          <p className="text-xs opacity-50 mt-8">© {new Date().getFullYear()} Todos os direitos reservados. CNPJ de campanha fictício para demonstração.</p>
+          <p className="text-xs opacity-50 mt-8">
+            © {new Date().getFullYear()} Todos os direitos reservados a Karen Langkammer
+            <span className="mx-2">|</span>
+            <span className="text-purple-400">Desenvolvido por Wess design</span>
+          </p>
         </div>
       </footer>
     </div>
