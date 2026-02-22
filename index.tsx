@@ -1,3 +1,7 @@
+/**
+ * Karen Langkammer - Landing Page
+ * Automated Deployment Trigger
+ */
 import React, { useState, FormEvent, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
 import karenPalestra from './karen-palestra.jpg';
