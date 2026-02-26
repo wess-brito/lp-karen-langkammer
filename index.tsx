@@ -20,14 +20,16 @@ const ShieldIcon = () => (
 const CloseIcon = () => (
   <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><line x1="18" y1="6" x2="6" y2="18"></line><line x1="6" y1="6" x2="18" y2="18"></line></svg>
 );
+const InstagramIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+);
 
 const RAS_DF = [
-  "Outro Estado", "Plano Piloto", "Gama", "Taguatinga", "Brazlândia", "Sobradinho", "Planaltina", "Paranoá",
-  "Núcleo Bandeirante", "Ceilândia", "Guará", "Cruzeiro", "Samambaia", "Santa Maria", "São Sebastião",
-  "Recanto das Emas", "Lago Sul", "Riacho Fundo", "Lago Norte", "Candangolândia", "Águas Claras",
-  "Riacho Fundo II", "Sudoeste/Octogonal", "Varjão", "Park Way", "SCIA (Estrutural)", "Sobradinho II",
-  "Jardim Botânico", "Itapoã", "SIA", "Vicente Pires", "Fercal", "Sol Nascente/Pôr do Sol", "Arniqueira",
-  "Arapoanga", "Água Quente"
+  "Outro Estado", "Água Quente", "Águas Claras", "Arapoanga", "Arniqueira", "Brazlândia", "Candangolândia", "Ceilândia",
+  "Cruzeiro", "Fercal", "Gama", "Guará", "Itapoã", "Jardim Botânico", "Lago Norte", "Lago Sul", "Núcleo Bandeirante",
+  "Paranoá", "Park Way", "Planaltina", "Plano Piloto", "Recanto das Emas", "Riacho Fundo", "Riacho Fundo II",
+  "Samambaia", "Santa Maria", "São Sebastião", "SCIA (Estrutural)", "SIA", "Sobradinho", "Sobradinho II",
+  "Sol Nascente/Pôr do Sol", "Sudoeste/Octogonal", "Taguatinga", "Varjão", "Vicente Pires"
 ];
 
 const HeroSection = () => (
@@ -45,8 +47,18 @@ interface LeadModalProps { isOpen: boolean; onClose: () => void; source: string;
 const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
   const [formData, setFormData] = useState({ nome: '', telefone: '', email: '', ra: '' });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [view, setView] = useState<'form' | 'success' | 'instagram'>('form');
   const [emailError, setEmailError] = useState('');
+
+  // Reset view when modal closes or opens
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setView('form');
+        setFormData({ nome: '', telefone: '', email: '', ra: '' });
+      }, 300);
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -84,7 +96,7 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
       const { error } = await supabase.from('leads').insert([{ ...formData, source }]);
       if (error) throw error;
 
-      setIsSuccess(true);
+      setView('success');
       if (source === 'download') {
         const link = document.createElement('a');
         link.href = '/cartilha-karen-langkammer.pdf';
@@ -103,7 +115,7 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
     <div className="fixed inset-0 z-50 flex items-center justify-center p-4">
       <div className="absolute inset-0 bg-gray-900/80 backdrop-blur-sm" onClick={onClose}></div>
       <div className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-fade-in-up">
-        {!isSuccess ? (
+        {view === 'form' ? (
           <>
             <div className="bg-purple-900 p-6 flex justify-between items-start">
               <div>
@@ -129,11 +141,45 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
               </button>
             </form>
           </>
-        ) : (
+        ) : view === 'success' ? (
           <div className="p-12 text-center flex flex-col items-center">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6"><CheckIcon /></div>
-            <h3 className="text-2xl font-display font-bold text-gray-900 mb-3">Cadastro realizado!</h3>
-            <button onClick={onClose} className="px-8 py-3 bg-gray-100 rounded-lg">Fechar</button>
+            <h3 className="text-2xl font-display font-bold text-gray-900 mb-3">Cadastro realizado.</h3>
+            <p className="text-gray-600 mb-2">Buscar informação é um ato de coragem.</p>
+            <p className="text-gray-600 mb-8">Obrigada por começar.</p>
+            <button
+              onClick={() => setView('instagram')}
+              className="w-full bg-purple-900 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2"
+            >
+              Continuar <ArrowRight />
+            </button>
+          </div>
+        ) : (
+          <div className="p-12 text-center flex flex-col items-center relative">
+            <div className="absolute top-6 right-6">
+              <button
+                onClick={onClose}
+                className="text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+                aria-label="Fechar"
+              >
+                <CloseIcon />
+              </button>
+            </div>
+            <div className="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 mb-6 animate-bounce"><InstagramIcon /></div>
+            <h3 className="text-2xl font-display font-bold text-gray-900 mb-3">Siga no Instagram</h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Acompanhe o trabalho da <strong>Delegada Karen</strong> em tempo real e receba mais orientações.
+            </p>
+            <div className="w-full">
+              <a
+                href="https://www.instagram.com/delegadakarendf?igsh=NWpmcHJ3dWR1bmRr"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="w-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2"
+              >
+                <InstagramIcon /> Seguir no Instagram
+              </a>
+            </div>
           </div>
         )}
       </div>
@@ -156,11 +202,10 @@ const App = () => {
         <div className="container mx-auto px-6 relative z-10 pt-20 pb-20">
           <div className="max-w-2xl animate-fade-in-up">
             <h1 className="font-display text-4xl md:text-6xl font-extrabold leading-tight mb-6 drop-shadow-lg">
-              A violência contra a mulher não começa no soco.<br />
-              <span className="text-purple-300">Começa no silêncio.</span>
+              A violência contra a mulher <span className="text-purple-300">começa quando ninguém escuta.</span>
             </h1>
             <p className="text-lg md:text-xl text-gray-100 font-light mb-8 border-l-4 border-purple-500 pl-4 drop-shadow-md">
-              Eu sou <strong>Karen Langkammer</strong>, Delegada de Polícia Civil, e luto para que nenhuma mulher precise quebrar para ser protegida.
+              Eu sou <strong>a Delegada Karen.</strong> Este espaço existe para informar, orientar e proteger. Aqui, a violência é tratada com seriedade, sem relativizações, sem julgamentos e sem atalhos fáceis.
             </p>
             <button onClick={() => openModal('hero')} className="group bg-white text-purple-900 font-bold py-4 px-8 rounded-full shadow-lg flex items-center gap-3 text-lg">
               Conheça a proposta | Apoie essa luta <ArrowRight />
@@ -211,7 +256,7 @@ const App = () => {
           <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-8">“Talvez eu esteja exagerando.”<br /><span className="text-gray-400 font-normal italic">É assim que tudo começa.</span></h2>
           <div className="space-y-6 text-xl text-gray-700 font-light leading-relaxed">
             <p>Não precisa de grito. Não precisa de tapa.</p>
-            <p>A violência começa quando você passa a duvidar do que sente, a se calar para evitar conflito e a diminuir quem você é para caber em alguém.</p>
+            <p>Ela começa quando você duvida do que sente, se cala para evitar conflito e se diminui para caber em alguém.</p>
             <div className="pt-8"><p className="font-display font-bold text-2xl text-purple-900">Isso não é fragilidade. É falta de informação, de apoio e de um Estado que chegue antes do pior.</p></div>
           </div>
         </div>
