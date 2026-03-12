@@ -314,7 +314,7 @@ const App = () => {
       <footer className="bg-gray-950 text-gray-500 py-12 border-t border-gray-900">
         <div className="container mx-auto px-6 text-center">
           <p className="font-display font-bold text-white text-xl mb-4">KAREN LANGKAMMER</p>
-          <p className="text-sm mb-2">Delegada de Polícia Civil • Pré-candidata a Deputada Distrital</p>
+          <p className="text-sm mb-2">Delegada de Polícia Civil</p>
           <p className="text-xs opacity-50 mt-8">
             © {new Date().getFullYear()} Todos os direitos reservados a Karen Langkammer
             <span className="mx-2">|</span>
