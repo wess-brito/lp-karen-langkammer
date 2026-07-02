@@ -554,7 +554,7 @@ const App = () => {
             </div>
 
             <button
-              onClick={handleDownload}
+              onClick={() => openModal('download')}
               className="relative z-10 bg-white text-purple-900 hover:bg-purple-50 font-bold py-4 px-8 rounded-xl shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-3 w-full md:w-auto text-center"
             >
               <DownloadIcon />
