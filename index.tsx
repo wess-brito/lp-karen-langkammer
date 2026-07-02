@@ -775,23 +775,38 @@ const App = () => {
         </div>
       </section>
 
-      {/* BLOCO GRUPOS WHATSAPP */}
-      <section className="py-20 bg-white text-center">
-        <div className="container mx-auto px-6 max-w-5xl">
-          <div className="flex items-center justify-center gap-3 mb-3">
-            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-600">
-              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-            </svg>
-            <span className="text-green-700 font-bold tracking-widest uppercase text-sm">Comunidade</span>
-          </div>
-          <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
-            Faça parte dos meus grupos
-          </h2>
-          <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-14 leading-relaxed font-light">
-            Entre nos grupos de multiplicadores da sua região e acompanhe de perto as ações, eventos e conquistas.
-          </p>
+      {/* BLOCO GRUPOS WHATSAPP - REDESIGN PREMIUM (LIGHT THEME) */}
+      <section className="py-24 relative overflow-hidden bg-gray-50 border-t border-gray-100">
+        {/* Background decorations */}
+        <div className="absolute top-0 left-0 w-full h-full overflow-hidden pointer-events-none">
+          <div className="absolute top-[-10%] left-[-10%] w-[40%] h-[40%] bg-green-200/40 rounded-full blur-[100px]"></div>
+          <div className="absolute bottom-[-10%] right-[-10%] w-[40%] h-[40%] bg-emerald-200/40 rounded-full blur-[100px]"></div>
+          <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-[1px] bg-gradient-to-r from-transparent via-green-200 to-transparent"></div>
+        </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+        <div className="container mx-auto px-6 max-w-6xl relative z-10">
+          <div className="text-center mb-16 animate-fade-in-up">
+            <div className="inline-flex items-center justify-center p-3 mb-6 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 border border-green-200 ring-1 ring-green-500/10 shadow-[0_0_30px_rgba(34,197,94,0.1)]">
+              <svg xmlns="http://www.w3.org/2000/svg" width="32" height="32" viewBox="0 0 24 24" fill="none" stroke="url(#greenGradientLight)" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round">
+                <defs>
+                  <linearGradient id="greenGradientLight" x1="0%" y1="0%" x2="100%" y2="100%">
+                    <stop offset="0%" stopColor="#22c55e" />
+                    <stop offset="100%" stopColor="#059669" />
+                  </linearGradient>
+                </defs>
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+              </svg>
+            </div>
+            
+            <h2 className="font-display text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
+              A força da nossa comunidade
+            </h2>
+            <p className="text-gray-600 text-lg md:text-xl max-w-2xl mx-auto leading-relaxed font-light">
+              Escolha sua região e junte-se ao grupo de multiplicadores. Vamos construir juntos um DF mais seguro e com mais oportunidades.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-2 gap-6 max-w-4xl mx-auto">
             {[
               { city: "Ceilândia / Sol Nascente / Pôr do Sol", link: "https://chat.whatsapp.com/KuglJIzMX0VBbGy1onRhUy?mode=gi_t" },
               { city: "Areal / Arniqueira", link: "https://chat.whatsapp.com/JfoRMYS7tyUIGxcFTb4cyA?mode=gi_t" },
@@ -803,23 +818,42 @@ const App = () => {
                 href={grupo.link}
                 target="_blank"
                 rel="noopener noreferrer"
-                className="group flex items-center gap-5 p-5 md:p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-green-50 hover:border-green-200 hover:shadow-lg transition-all duration-300"
+                className="group relative p-[1px] rounded-2xl overflow-hidden transition-all duration-500 hover:-translate-y-2 hover:shadow-[0_20px_40px_-15px_rgba(34,197,94,0.2)] block"
+                style={{ animationDelay: `${i * 100}ms` }}
               >
-                <div className="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center shrink-0 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
-                  </svg>
-                </div>
-                <div className="text-left">
-                  <p className="font-display font-bold text-gray-900 text-lg group-hover:text-green-700 transition-colors">
-                    {grupo.city}
-                  </p>
-                  <p className="text-gray-400 text-sm mt-0.5">Grupo de Multiplicadores</p>
-                </div>
-                <div className="ml-auto text-gray-300 group-hover:text-green-500 transition-colors">
-                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
-                  </svg>
+                {/* Borda gradiente animada */}
+                <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-emerald-500/10 to-green-500/20 opacity-0 group-hover:opacity-100 group-hover:from-green-400 group-hover:via-emerald-500 group-hover:to-teal-500 transition-opacity duration-500"></div>
+                
+                {/* Conteúdo do Card */}
+                <div className="relative h-full flex flex-col md:flex-row items-start md:items-center gap-5 p-6 bg-white/90 backdrop-blur-xl rounded-2xl border border-gray-100 group-hover:border-transparent transition-all duration-500">
+                  
+                  {/* Ícone com Glow */}
+                  <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center shrink-0 group-hover:from-green-500 group-hover:to-emerald-600 transition-all duration-500 border border-green-200 group-hover:border-transparent z-10">
+                    <div className="absolute inset-0 bg-green-500 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500 rounded-full"></div>
+                    <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-600 group-hover:text-white transition-colors duration-500 relative z-10">
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                    </svg>
+                  </div>
+
+                  <div className="flex-1 text-left relative z-10">
+                    <p className="font-display font-bold text-gray-900 text-lg group-hover:text-green-700 transition-colors duration-300 line-clamp-2">
+                      {grupo.city}
+                    </p>
+                    <div className="flex items-center gap-2 mt-2">
+                      <span className="relative flex h-2 w-2">
+                        <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-green-400 opacity-75"></span>
+                        <span className="relative inline-flex rounded-full h-2 w-2 bg-green-500"></span>
+                      </span>
+                      <p className="text-gray-500 text-sm font-medium">Entrar no grupo</p>
+                    </div>
+                  </div>
+
+                  {/* Seta Direita */}
+                  <div className="relative z-10 w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-green-100 group-hover:text-green-600 group-hover:translate-x-1 transition-all duration-300 shrink-0 self-end md:self-auto border border-gray-100 group-hover:border-transparent">
+                    <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                    </svg>
+                  </div>
                 </div>
               </a>
             ))}
@@ -830,7 +864,7 @@ const App = () => {
       {/* FOOTER */}
       <footer className="bg-gray-950 text-gray-500 py-12 border-t border-gray-900">
         <div className="container mx-auto px-6 text-center">
-          <p className="font-display font-bold text-white text-xl mb-4">KAREN LANGKAMMER</p>
+          <p className="font-display font-bold text-white text-xl mb-4">Delegada Karen</p>
           <p className="text-sm mb-2">Delegada de Polícia Civil • Pré-candidata a Deputada Distrital</p>
           <p className="text-xs opacity-50 mt-8">
             © {new Date().getFullYear()} Todos os direitos reservados a Karen Langkammer
