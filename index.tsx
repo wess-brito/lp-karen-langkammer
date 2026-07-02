@@ -187,10 +187,124 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
   );
 };
 
+interface Pauta {
+  id: number;
+  title: string;
+  description: string;
+  icon: (className?: string) => React.ReactNode;
+}
+
+const PAUTAS: Pauta[] = [
+  {
+    id: 1,
+    title: "Proteção à Mulher",
+    description: "Discussão de políticas de proteção, prevenção à violência e fortalecimento da rede de apoio.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="10" r="3"/><path d="M12 13v4M10 15h4"/></svg>
+    )
+  },
+  {
+    id: 2,
+    title: "Infância e Família",
+    description: "Acompanhamento de temas relacionados ao desenvolvimento infantil, fortalecimento familiar e proteção social.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+    )
+  },
+  {
+    id: 3,
+    title: "Famílias Atípicas",
+    description: "Inclusão, acolhimento e acesso a serviços públicos para famílias atípicas.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 8v8"/><path d="M8 12h8"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+    )
+  },
+  {
+    id: 4,
+    title: "Segurança Pública",
+    description: "Foco na prevenção, integração entre órgãos públicos e proteção da comunidade.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M12 2a5 5 0 0 0-5 5v4h10V7a5 5 0 0 0-5-5z"/></svg>
+    )
+  },
+  {
+    id: 5,
+    title: "Esporte",
+    description: "Valorização do esporte como ferramenta de inclusão, parquinhos e Centro Olímpico.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M6 12A6 6 0 0 1 18 12"/><path d="M12 6A6 6 0 0 1 12 18"/></svg>
+    )
+  },
+  {
+    id: 6,
+    title: "Saúde Pública",
+    description: "Fiscalização relacionadas ao acesso, atendimento e qualidade dos serviços públicos.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+    )
+  },
+  {
+    id: 7,
+    title: "Mobilidade Urbana",
+    description: "Acessibilidade, deslocamento seguro e melhoria dos espaços urbanos.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10"/><path d="M12 16v4"/><circle cx="7" cy="12" r="1"/><circle cx="17" cy="12" r="1"/></svg>
+    )
+  },
+  {
+    id: 8,
+    title: "Educação",
+    description: "Valorização da educação como ferramenta de transformação social, geração de oportunidades e desenvolvimento humano.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+    )
+  },
+  {
+    id: 9,
+    title: "Gestão Pública e Transparência",
+    description: "Eficiência administrativa, fiscalização e transparência na gestão pública.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+    )
+  },
+  {
+    id: 10,
+    title: "Empreendedorismo",
+    description: "Incentivo à geração de renda, ao fortalecimento dos pequenos negócios e à criação de oportunidades.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+    )
+  },
+  {
+    id: 11,
+    title: "Inclusão e Respeito às Pessoas",
+    description: "Defesa da dignidade humana, combate à discriminação, promoção do respeito e garantia de acesso igualitário aos serviços públicos.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+    )
+  },
+  {
+    id: 12,
+    title: "Bem-Estar Animal e Guarda Responsável",
+    description: "Incentivo a políticas de proteção animal, guarda responsável, campanhas educativas e ações integradas de saúde pública.",
+    icon: (className) => (
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="14" r="4" /><circle cx="6.5" cy="10.5" r="2.5" /><circle cx="10" cy="5.5" r="2.5" /><circle cx="14" cy="5.5" r="2.5" /><circle cx="17.5" cy="10.5" r="2.5" /></svg>
+    )
+  }
+];
+
 const App = () => {
   const [isModalOpen, setIsModalOpen] = useState(false);
   const [modalSource, setModalSource] = useState('hero');
+  const [showPautas, setShowPautas] = useState(false);
   const openModal = (s: string) => { setModalSource(s); setIsModalOpen(true); };
+
+  const handleDownload = () => {
+    const link = document.createElement('a');
+    link.href = '/pautas-dep-karen.pdf';
+    link.download = 'pautas-dep-karen.pdf';
+    link.click();
+  };
 
   return (
     <div className="font-sans antialiased">
@@ -245,7 +359,7 @@ const App = () => {
               <h3 className="font-display text-2xl md:text-3xl font-bold mb-4">Cartilha de Proteção e Orientação</h3>
               <p className="text-purple-100 leading-relaxed">Informação salva vidas. Baixe agora o material completo.</p>
             </div>
-            <button onClick={() => openModal('download')} className="bg-white text-purple-900 font-bold py-4 px-8 rounded-xl flex items-center gap-3 shadow-lg"><DownloadIcon /><span>Baixar Cartilha</span></button>
+            <button onClick={handleDownload} className="bg-white text-purple-900 font-bold py-4 px-8 rounded-xl flex items-center gap-3 shadow-lg"><DownloadIcon /><span>Baixar Cartilha</span></button>
           </div>
         </div>
       </section>
@@ -258,6 +372,85 @@ const App = () => {
             <p>Não precisa de grito. Não precisa de tapa.</p>
             <p>Ela começa quando você duvida do que sente, se cala para evitar conflito e se diminui para caber em alguém.</p>
             <div className="pt-8"><p className="font-display font-bold text-2xl text-purple-900">Isso não é fragilidade. É falta de informação, de apoio e de um Estado que chegue antes do pior.</p></div>
+          </div>
+        </div>
+      </section>
+
+      {/* BLOCO DESTAQUE PAUTAS */}
+      <section className="py-20 bg-gradient-to-br from-purple-950 via-purple-900 to-indigo-950 text-white text-center relative overflow-hidden">
+        {/* Efeitos de brilho decorativos de fundo */}
+        <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
+        
+        <div className="container mx-auto px-6 max-w-6xl relative z-10">
+          <span className="text-purple-300 font-bold tracking-widest uppercase text-sm mb-3 block">Compromisso e Ação</span>
+          <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
+            Minhas Pautas
+          </h2>
+          <p className="text-purple-200 text-lg md:text-xl font-medium max-w-2xl mx-auto mb-8 uppercase tracking-wider font-display">
+            Proteger pessoas. Criar oportunidades. Transformar vidas.
+          </p>
+          <p className="text-purple-100/80 max-w-3xl mx-auto text-base md:text-lg mb-12 leading-relaxed font-light">
+            Como Delegada de Polícia, vivi a realidade da segurança pública de perto. Minhas propostas buscam ir na raiz do problema, construindo um futuro de proteção, dignidade e respeito para todo o Distrito Federal.
+          </p>
+          
+          <div className="mb-12">
+            <button 
+              onClick={() => setShowPautas(!showPautas)} 
+              className="group inline-flex items-center gap-3 bg-white text-purple-900 font-bold py-4 px-10 rounded-full shadow-2xl hover:bg-purple-100 active:scale-95 transition-all duration-300 text-lg"
+            >
+              <span>{showPautas ? "Ocultar Pautas" : "Visualizar Minhas Pautas"}</span>
+              <svg 
+                xmlns="http://www.w3.org/2000/svg" 
+                width="20" 
+                height="20" 
+                viewBox="0 0 24 24" 
+                fill="none" 
+                stroke="currentColor" 
+                strokeWidth="2.5" 
+                strokeLinecap="round" 
+                strokeLinejoin="round"
+                className={`transition-transform duration-300 ${showPautas ? "rotate-180" : ""}`}
+              >
+                <polyline points="6 9 12 15 18 9"></polyline>
+              </svg>
+            </button>
+          </div>
+
+          {/* Grid de Pautas Expansível */}
+          <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
+            showPautas ? "max-h-[3000px] opacity-100 scale-100" : "max-h-0 opacity-0 scale-95 pointer-events-none"
+          }`}>
+            <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6 text-left">
+              {PAUTAS.map((pauta) => (
+                <div 
+                  key={pauta.id} 
+                  className="bg-purple-900/40 backdrop-blur-md border border-purple-500/20 rounded-2xl p-6 hover:bg-purple-900/60 hover:border-purple-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-950/20 transition-all duration-300 flex flex-col gap-4 group"
+                >
+                  <div className="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center text-purple-300 group-hover:bg-purple-500/40 group-hover:text-white transition-all duration-300">
+                    {pauta.icon("w-6 h-6")}
+                  </div>
+                  <div>
+                    <h3 className="font-display font-bold text-xl text-white mb-2 tracking-wide group-hover:text-purple-200 transition-colors">
+                      {pauta.title}
+                    </h3>
+                    <p className="text-purple-100/70 text-sm md:text-base leading-relaxed font-light">
+                      {pauta.description}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+            
+            <div className="mt-12 mb-4 flex justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
+              <button 
+                onClick={handleDownload} 
+                className="flex items-center gap-3 bg-purple-600/20 border border-purple-500/30 text-purple-200 hover:bg-purple-600/40 hover:text-white hover:border-purple-400 font-semibold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 group"
+              >
+                <span className="group-hover:-translate-y-1 transition-transform duration-300"><DownloadIcon /></span>
+                <span>Baixar versão completa em PDF</span>
+              </button>
+            </div>
           </div>
         </div>
       </section>
