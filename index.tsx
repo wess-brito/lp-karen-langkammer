@@ -335,7 +335,7 @@ const PAUTAS: Pauta[] = [
     title: "Proteção à Mulher",
     description: "Discussão de políticas de proteção, prevenção à violência e fortalecimento da rede de apoio.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><circle cx="12" cy="10" r="3"/><path d="M12 13v4M10 15h4"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" /><circle cx="12" cy="10" r="3" /><path d="M12 13v4M10 15h4" /></svg>
     )
   },
   {
@@ -343,7 +343,7 @@ const PAUTAS: Pauta[] = [
     title: "Infância e Família",
     description: "Acompanhamento de temas relacionados ao desenvolvimento infantil, fortalecimento familiar e proteção social.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><path d="M9 22V12h6v10"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z" /><path d="M9 22V12h6v10" /></svg>
     )
   },
   {
@@ -351,7 +351,7 @@ const PAUTAS: Pauta[] = [
     title: "Famílias Atípicas",
     description: "Inclusão, acolhimento e acesso a serviços públicos para famílias atípicas.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z"/><path d="M12 8v8"/><path d="M8 12h8"/><circle cx="12" cy="12" r="1" fill="currentColor"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M12 21a9 9 0 1 0 0-18 9 9 0 0 0 0 18z" /><path d="M12 8v8" /><path d="M8 12h8" /><circle cx="12" cy="12" r="1" fill="currentColor" /></svg>
     )
   },
   {
@@ -359,7 +359,7 @@ const PAUTAS: Pauta[] = [
     title: "Segurança Pública",
     description: "Foco na prevenção, integração entre órgãos públicos e proteção da comunidade.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M12 2a5 5 0 0 0-5 5v4h10V7a5 5 0 0 0-5-5z"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="11" width="18" height="11" rx="2" ry="2" /><path d="M12 2a5 5 0 0 0-5 5v4h10V7a5 5 0 0 0-5-5z" /></svg>
     )
   },
   {
@@ -367,7 +367,7 @@ const PAUTAS: Pauta[] = [
     title: "Esporte",
     description: "Valorização do esporte como ferramenta de inclusão, parquinhos e Centro Olímpico.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10"/><path d="M6 12A6 6 0 0 1 18 12"/><path d="M12 6A6 6 0 0 1 12 18"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="12" cy="12" r="10" /><path d="M6 12A6 6 0 0 1 18 12" /><path d="M12 6A6 6 0 0 1 12 18" /></svg>
     )
   },
   {
@@ -375,7 +375,7 @@ const PAUTAS: Pauta[] = [
     title: "Saúde Pública",
     description: "Fiscalização relacionadas ao acesso, atendimento e qualidade dos serviços públicos.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M22 12h-4l-3 9L9 3l-3 9H2" /></svg>
     )
   },
   {
@@ -383,7 +383,7 @@ const PAUTAS: Pauta[] = [
     title: "Mobilidade Urbana",
     description: "Acessibilidade, deslocamento seguro e melhoria dos espaços urbanos.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="12" rx="2"/><path d="M7 20h10"/><path d="M12 16v4"/><circle cx="7" cy="12" r="1"/><circle cx="17" cy="12" r="1"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="3" y="4" width="18" height="12" rx="2" /><path d="M7 20h10" /><path d="M12 16v4" /><circle cx="7" cy="12" r="1" /><circle cx="17" cy="12" r="1" /></svg>
     )
   },
   {
@@ -391,7 +391,7 @@ const PAUTAS: Pauta[] = [
     title: "Educação",
     description: "Valorização da educação como ferramenta de transformação social, geração de oportunidades e desenvolvimento humano.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20"/><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M4 19.5A2.5 2.5 0 0 1 6.5 17H20" /><path d="M6.5 2H20v20H6.5A2.5 2.5 0 0 1 4 19.5v-15A2.5 2.5 0 0 1 6.5 2z" /></svg>
     )
   },
   {
@@ -399,7 +399,7 @@ const PAUTAS: Pauta[] = [
     title: "Gestão Pública e Transparência",
     description: "Eficiência administrativa, fiscalização e transparência na gestão pública.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/><path d="M11 8v6"/><path d="M8 11h6"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><circle cx="11" cy="11" r="8" /><line x1="21" y1="21" x2="16.65" y2="16.65" /><path d="M11 8v6" /><path d="M8 11h6" /></svg>
     )
   },
   {
@@ -407,7 +407,7 @@ const PAUTAS: Pauta[] = [
     title: "Empreendedorismo",
     description: "Incentivo à geração de renda, ao fortalecimento dos pequenos negócios e à criação de oportunidades.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2"/><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="7" width="20" height="14" rx="2" ry="2" /><path d="M16 21V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v16" /></svg>
     )
   },
   {
@@ -415,7 +415,7 @@ const PAUTAS: Pauta[] = [
     title: "Inclusão e Respeito às Pessoas",
     description: "Defesa da dignidade humana, combate à discriminação, promoção do respeito e garantia de acesso igualitário aos serviços públicos.",
     icon: (className) => (
-      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/></svg>
+      <svg className={className} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2" /><circle cx="9" cy="7" r="4" /><path d="M23 21v-2a4 4 0 0 0-3-3.87" /><path d="M16 3.13a4 4 0 0 1 0 7.75" /></svg>
     )
   },
   {
@@ -552,7 +552,6 @@ const App = () => {
                 <span>PDF Gratuito</span> • <span>Leitura Rápida</span>
               </div>
             </div>
-
             <button
               onClick={() => openModal('download')}
               className="relative z-10 bg-white text-purple-900 hover:bg-purple-50 font-bold py-4 px-8 rounded-xl shadow-lg transition-all hover:scale-105 flex items-center justify-center gap-3 w-full md:w-auto text-center"
@@ -594,7 +593,7 @@ const App = () => {
         {/* Efeitos de brilho decorativos de fundo */}
         <div className="absolute top-0 left-1/4 w-96 h-96 bg-purple-500/10 rounded-full blur-3xl pointer-events-none"></div>
         <div className="absolute bottom-0 right-1/4 w-96 h-96 bg-blue-500/10 rounded-full blur-3xl pointer-events-none"></div>
-        
+
         <div className="container mx-auto px-6 max-w-6xl relative z-10">
           <span className="text-purple-300 font-bold tracking-widest uppercase text-sm mb-3 block">Compromisso e Ação</span>
           <h2 className="font-display text-4xl md:text-5xl font-extrabold mb-4 tracking-tight">
@@ -606,22 +605,22 @@ const App = () => {
           <p className="text-purple-100/80 max-w-3xl mx-auto text-base md:text-lg mb-12 leading-relaxed font-light">
             Como Delegada de Polícia, vivi a realidade da segurança pública de perto. Minhas propostas buscam ir na raiz do problema, construindo um futuro de proteção, dignidade e respeito para todo o Distrito Federal.
           </p>
-          
+
           <div className="mb-12">
-            <button 
-              onClick={() => setShowPautas(!showPautas)} 
+            <button
+              onClick={() => setShowPautas(!showPautas)}
               className="group inline-flex items-center gap-3 bg-white text-purple-900 font-bold py-4 px-10 rounded-full shadow-2xl hover:bg-purple-100 active:scale-95 transition-all duration-300 text-lg"
             >
               <span>{showPautas ? "Ocultar Pautas" : "Visualizar Minhas Pautas"}</span>
-              <svg 
-                xmlns="http://www.w3.org/2000/svg" 
-                width="20" 
-                height="20" 
-                viewBox="0 0 24 24" 
-                fill="none" 
-                stroke="currentColor" 
-                strokeWidth="2.5" 
-                strokeLinecap="round" 
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="20"
+                height="20"
+                viewBox="0 0 24 24"
+                fill="none"
+                stroke="currentColor"
+                strokeWidth="2.5"
+                strokeLinecap="round"
                 strokeLinejoin="round"
                 className={`transition-transform duration-300 ${showPautas ? "rotate-180" : ""}`}
               >
@@ -631,13 +630,12 @@ const App = () => {
           </div>
 
           {/* Grid de Pautas Expansível */}
-          <div className={`transition-all duration-700 ease-in-out overflow-hidden ${
-            showPautas ? "max-h-[3000px] opacity-100 scale-100" : "max-h-0 opacity-0 scale-95 pointer-events-none"
-          }`}>
+          <div className={`transition-all duration-700 ease-in-out overflow-hidden ${showPautas ? "max-h-[3000px] opacity-100 scale-100" : "max-h-0 opacity-0 scale-95 pointer-events-none"
+            }`}>
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 pt-6 text-left">
               {PAUTAS.map((pauta) => (
-                <div 
-                  key={pauta.id} 
+                <div
+                  key={pauta.id}
                   className="bg-purple-900/40 backdrop-blur-md border border-purple-500/20 rounded-2xl p-6 hover:bg-purple-900/60 hover:border-purple-400/40 hover:-translate-y-1 hover:shadow-xl hover:shadow-purple-950/20 transition-all duration-300 flex flex-col gap-4 group"
                 >
                   <div className="w-12 h-12 rounded-xl bg-purple-500/20 border border-purple-400/30 flex items-center justify-center text-purple-300 group-hover:bg-purple-500/40 group-hover:text-white transition-all duration-300">
@@ -654,10 +652,10 @@ const App = () => {
                 </div>
               ))}
             </div>
-            
+
             <div className="mt-12 mb-4 flex justify-center animate-fade-in-up" style={{ animationDelay: '0.3s' }}>
-              <button 
-                onClick={handleDownload} 
+              <button
+                onClick={handleDownload}
                 className="flex items-center gap-3 bg-purple-600/20 border border-purple-500/30 text-purple-200 hover:bg-purple-600/40 hover:text-white hover:border-purple-400 font-semibold py-4 px-8 rounded-xl shadow-lg transition-all duration-300 group"
               >
                 <span className="group-hover:-translate-y-1 transition-transform duration-300"><DownloadIcon /></span>
@@ -794,10 +792,10 @@ const App = () => {
                     <stop offset="100%" stopColor="#059669" />
                   </linearGradient>
                 </defs>
-                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
               </svg>
             </div>
-            
+
             <h2 className="font-display text-4xl md:text-5xl font-extrabold text-gray-900 mb-6 tracking-tight">
               A força da nossa comunidade
             </h2>
@@ -823,15 +821,15 @@ const App = () => {
               >
                 {/* Borda gradiente animada */}
                 <div className="absolute inset-0 bg-gradient-to-br from-green-500/20 via-emerald-500/10 to-green-500/20 opacity-0 group-hover:opacity-100 group-hover:from-green-400 group-hover:via-emerald-500 group-hover:to-teal-500 transition-opacity duration-500"></div>
-                
+
                 {/* Conteúdo do Card */}
                 <div className="relative h-full flex flex-col md:flex-row items-start md:items-center gap-5 p-6 bg-white/90 backdrop-blur-xl rounded-2xl border border-gray-100 group-hover:border-transparent transition-all duration-500">
-                  
+
                   {/* Ícone com Glow */}
                   <div className="relative w-14 h-14 rounded-2xl bg-gradient-to-br from-green-50 to-emerald-100 flex items-center justify-center shrink-0 group-hover:from-green-500 group-hover:to-emerald-600 transition-all duration-500 border border-green-200 group-hover:border-transparent z-10">
                     <div className="absolute inset-0 bg-green-500 opacity-0 group-hover:opacity-30 blur-xl transition-opacity duration-500 rounded-full"></div>
                     <svg xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round" className="text-green-600 group-hover:text-white transition-colors duration-500 relative z-10">
-                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                      <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z" />
                     </svg>
                   </div>
 
@@ -851,7 +849,7 @@ const App = () => {
                   {/* Seta Direita */}
                   <div className="relative z-10 w-10 h-10 rounded-full bg-gray-50 flex items-center justify-center text-gray-400 group-hover:bg-green-100 group-hover:text-green-600 group-hover:translate-x-1 transition-all duration-300 shrink-0 self-end md:self-auto border border-gray-100 group-hover:border-transparent">
                     <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
-                      <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                      <line x1="5" y1="12" x2="19" y2="12" /><polyline points="12 5 19 12 12 19" />
                     </svg>
                   </div>
                 </div>
