@@ -503,6 +503,57 @@ const App = () => {
         </div>
       </section>
 
+      {/* BLOCO GRUPOS WHATSAPP */}
+      <section className="py-20 bg-white text-center">
+        <div className="container mx-auto px-6 max-w-5xl">
+          <div className="flex items-center justify-center gap-3 mb-3">
+            <svg xmlns="http://www.w3.org/2000/svg" width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="1.5" strokeLinecap="round" strokeLinejoin="round" className="text-green-600">
+              <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+            </svg>
+            <span className="text-green-700 font-bold tracking-widest uppercase text-sm">Comunidade</span>
+          </div>
+          <h2 className="font-display text-3xl md:text-4xl font-bold text-gray-900 mb-4">
+            Faça parte dos meus grupos
+          </h2>
+          <p className="text-gray-500 text-lg max-w-2xl mx-auto mb-14 leading-relaxed font-light">
+            Entre nos grupos de multiplicadores da sua região e acompanhe de perto as ações, eventos e conquistas.
+          </p>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-5">
+            {[
+              { city: "Ceilândia / Sol Nascente / Pôr do Sol", link: "https://chat.whatsapp.com/KuglJIzMX0VBbGy1onRhUy?mode=gi_t" },
+              { city: "Areal / Arniqueira", link: "https://chat.whatsapp.com/JfoRMYS7tyUIGxcFTb4cyA?mode=gi_t" },
+              { city: "Recanto das Emas", link: "https://chat.whatsapp.com/Gbdc2edaNLE07gUYxSS1tI?mode=gi_t" },
+              { city: "Planaltina / Sobradinho", link: "https://chat.whatsapp.com/IV5jSpbCxgm5ssC7a26KS0?mode=gi_t" },
+            ].map((grupo, i) => (
+              <a
+                key={i}
+                href={grupo.link}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="group flex items-center gap-5 p-5 md:p-6 rounded-2xl border border-gray-100 bg-gray-50 hover:bg-green-50 hover:border-green-200 hover:shadow-lg transition-all duration-300"
+              >
+                <div className="w-12 h-12 rounded-xl bg-green-100 text-green-600 flex items-center justify-center shrink-0 group-hover:bg-green-500 group-hover:text-white transition-all duration-300">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <path d="M21 11.5a8.38 8.38 0 0 1-.9 3.8 8.5 8.5 0 0 1-7.6 4.7 8.38 8.38 0 0 1-3.8-.9L3 21l1.9-5.7a8.38 8.38 0 0 1-.9-3.8 8.5 8.5 0 0 1 4.7-7.6 8.38 8.38 0 0 1 3.8-.9h.5a8.48 8.48 0 0 1 8 8v.5z"/>
+                  </svg>
+                </div>
+                <div className="text-left">
+                  <p className="font-display font-bold text-gray-900 text-lg group-hover:text-green-700 transition-colors">
+                    {grupo.city}
+                  </p>
+                  <p className="text-gray-400 text-sm mt-0.5">Grupo de Multiplicadores</p>
+                </div>
+                <div className="ml-auto text-gray-300 group-hover:text-green-500 transition-colors">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                  </svg>
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
       {/* FOOTER DETALHADO */}
       <footer className="bg-gray-950 text-gray-500 py-12 border-t border-gray-900">
         <div className="container mx-auto px-6 text-center">
