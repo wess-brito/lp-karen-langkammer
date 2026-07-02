@@ -4,6 +4,7 @@
  */
 import React, { useState, FormEvent, useEffect } from 'react';
 import { createRoot } from 'react-dom/client';
+import { supabase } from './supabaseClient';
 import karenPalestra from './karen-palestra.jpg';
 import bannerHero from './banner-hero.jpg';
 
@@ -57,6 +58,11 @@ const HeroSection = () => {
   );
 };
 
+// Ícone do Instagram
+const InstagramIcon = () => (
+  <svg xmlns="http://www.w3.org/2000/svg" width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
+);
+
 // Interface para o Modal
 interface LeadModalProps {
   isOpen: boolean;
@@ -72,8 +78,19 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
     ra: ''
   });
   const [isSubmitting, setIsSubmitting] = useState(false);
-  const [isSuccess, setIsSuccess] = useState(false);
+  const [view, setView] = useState<'form' | 'success' | 'instagram'>('form');
   const [emailError, setEmailError] = useState('');
+
+  // Reset view when modal closes or opens
+  useEffect(() => {
+    if (!isOpen) {
+      setTimeout(() => {
+        setView('form');
+        setFormData({ nome: '', telefone: '', email: '', ra: '' });
+        setEmailError('');
+      }, 300);
+    }
+  }, [isOpen]);
 
   if (!isOpen) return null;
 
@@ -112,21 +129,23 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
   const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
 
+    // Validação de campos obrigatórios
+    if (!formData.nome || !formData.telefone || !formData.email || !formData.ra) {
+      alert('Por favor, preencha todos os campos obrigatórios.');
+      return;
+    }
+
     if (!validateEmail(formData.email)) {
       setEmailError('Por favor, insira um e-mail válido para prosseguir.');
       return;
     }
 
     setIsSubmitting(true);
+    try {
+      const { error } = await supabase.from('leads').insert([{ ...formData, source }]);
+      if (error) throw error;
 
-    // Simulação de envio para API
-    console.log("Lead Capturado:", { ...formData, source });
-
-    setTimeout(() => {
-      setIsSubmitting(false);
-      setIsSuccess(true);
-
-      // Se a fonte for download, inicia o download automaticamente após cadastro
+      setView('success');
       if (source === 'download') {
         const link = document.createElement('a');
         link.href = '/cartilha-karen-langkammer.pdf';
@@ -135,7 +154,12 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
         link.click();
         document.body.removeChild(link);
       }
-    }, 1500);
+    } catch (err: any) {
+      console.error("Erro no Supabase:", err.message);
+      alert("Erro ao salvar dados. Tente novamente.");
+    } finally {
+      setIsSubmitting(false);
+    }
   };
 
   return (
@@ -148,7 +172,7 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
 
       {/* Card do Modal */}
       <div className="relative bg-white rounded-2xl w-full max-w-lg shadow-2xl overflow-hidden animate-fade-in-up">
-        {!isSuccess ? (
+        {view === 'form' ? (
           <>
             <div className="bg-purple-900 p-6 flex justify-between items-start">
               <div>
@@ -241,17 +265,14 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
               </div>
             </form>
           </>
-        ) : (
+        ) : view === 'success' ? (
           <div className="p-12 text-center flex flex-col items-center justify-center">
             <div className="w-20 h-20 bg-green-100 rounded-full flex items-center justify-center text-green-600 mb-6">
               <CheckIcon />
             </div>
             <h3 className="text-2xl font-display font-bold text-gray-900 mb-3">Cadastro realizado!</h3>
-            <p className="text-gray-600 mb-8">
-              {source === 'download'
-                ? 'Seu download deve começar automaticamente em instantes.'
-                : 'Obrigada por apoiar essa causa. Vamos juntas transformar a segurança do DF.'}
-            </p>
+            <p className="text-gray-600 mb-2">Buscar informação é um ato de coragem.</p>
+            <p className="text-gray-600 mb-8">Obrigada por começar.</p>
             {source === 'download' && (
               <a
                 href="/cartilha-karen-langkammer.pdf"
@@ -261,25 +282,39 @@ const LeadModal = ({ isOpen, onClose, source }: LeadModalProps) => {
                 Clique aqui se o download não iniciar
               </a>
             )}
-            <div className="bg-purple-50 p-6 rounded-2xl border border-purple-100 mb-8 w-full">
-              <p className="text-purple-900 font-bold mb-4">Acompanhe Karen langkammer no Instagram!</p>
+            <button
+              onClick={() => setView('instagram')}
+              className="w-full bg-purple-900 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2"
+            >
+              Continuar <ArrowRight />
+            </button>
+          </div>
+        ) : (
+          <div className="p-12 text-center flex flex-col items-center relative">
+            <div className="absolute top-6 right-6">
+              <button
+                onClick={onClose}
+                className="text-gray-400 hover:text-gray-600 transition-colors focus:outline-none"
+                aria-label="Fechar"
+              >
+                <CloseIcon />
+              </button>
+            </div>
+            <div className="w-20 h-20 bg-pink-100 rounded-full flex items-center justify-center text-pink-600 mb-6 animate-bounce"><InstagramIcon /></div>
+            <h3 className="text-2xl font-display font-bold text-gray-900 mb-3">Siga no Instagram</h3>
+            <p className="text-gray-600 mb-8 leading-relaxed">
+              Acompanhe o trabalho da <strong>Delegada Karen</strong> em tempo real e receba mais orientações.
+            </p>
+            <div className="w-full">
               <a
                 href="https://www.instagram.com/delegadakarendf?igsh=NWpmcHJ3dWR1bmRr"
                 target="_blank"
                 rel="noopener noreferrer"
-                className="inline-flex items-center gap-2 bg-gradient-to-r from-purple-600 to-pink-600 text-white font-bold py-3 px-6 rounded-xl shadow-md hover:shadow-lg transition-all hover:scale-[1.02]"
+                className="w-full bg-gradient-to-tr from-yellow-400 via-red-500 to-purple-600 text-white font-bold py-4 rounded-xl shadow-lg flex items-center justify-center gap-2"
               >
-                <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"><rect x="2" y="2" width="20" height="20" rx="5" ry="5"></rect><path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"></path><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"></line></svg>
-                Seguir no Instagram
+                <InstagramIcon /> Seguir no Instagram
               </a>
             </div>
-
-            <button
-              onClick={onClose}
-              className="px-8 py-3 bg-gray-100 hover:bg-gray-200 text-gray-800 rounded-lg font-medium transition-colors"
-            >
-              Fechar
-            </button>
           </div>
         )}
       </div>
