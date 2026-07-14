@@ -481,7 +481,7 @@ const App = () => {
               onClick={() => openModal('hero')}
               className="group bg-white text-purple-900 hover:bg-gray-100 font-bold py-4 px-8 rounded-full shadow-lg transition-all transform hover:-translate-y-1 flex items-center gap-3 text-lg"
             >
-              Conheça a proposta | Apoie essa luta
+              Conheça a pauta
               <span className="group-hover:translate-x-1 transition-transform">
                 <ArrowRight />
               </span>
