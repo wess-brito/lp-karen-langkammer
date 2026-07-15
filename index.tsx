@@ -810,6 +810,10 @@ const App = () => {
               { city: "Areal / Arniqueira", link: "https://chat.whatsapp.com/JfoRMYS7tyUIGxcFTb4cyA?mode=gi_t" },
               { city: "Recanto das Emas", link: "https://chat.whatsapp.com/Gbdc2edaNLE07gUYxSS1tI?mode=gi_t" },
               { city: "Planaltina / Sobradinho", link: "https://chat.whatsapp.com/IV5jSpbCxgm5ssC7a26KS0?mode=gi_t" },
+              { city: "Gama / Santa Maria", link: "https://chat.whatsapp.com/EAoQH0PakaaAKgZnxOMAiO?s=cl&p=i&ilr=1" },
+              { city: "Águas Claras / Guará", link: "https://chat.whatsapp.com/LiVMt72Mi5oFetaYpq5ej7?s=cl&p=i&ilr=1" },
+              { city: "Taguatinga / Vicente Pires", link: "https://chat.whatsapp.com/D2of9IXxgIw0StN0GYjAYG?s=cl&p=i&ilr=1" },
+              { city: "Planaltina / Itapoã", link: "https://chat.whatsapp.com/GjOLfcaaBaABUtujRDYXv8?s=cl&p=i&ilr=1" },
             ].map((grupo, i) => (
               <a
                 key={i}
